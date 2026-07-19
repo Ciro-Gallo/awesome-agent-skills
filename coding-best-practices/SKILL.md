@@ -14,7 +14,7 @@ Write code like a careful teammate who has to live with the result later. Favor 
 
 It is absolutely forbidden to commit credentials or secrets into code, tests, configuration, fixtures, examples, or documentation. This includes tokens, API keys, passwords, private keys, session secrets, and similar sensitive values.
 
-If code needs a credential, use the project's existing secret-management pattern such as environment variables, secret stores, or injected runtime configuration. If the users asks for commit and there is the risk of committing some sort of credentials you must warn the user.
+If code needs a credential, use the project's existing secret-management pattern such as environment variables, secret stores, or injected runtime configuration. If the user asks for a commit and there is a risk of committing credentials, warn the user.
 
 ## Core goals
 
@@ -225,12 +225,13 @@ try {
 
 **Better:**
 
-```js
+```ts
 try {
   saveOrder(order);
 } catch (error) {
-  logger.error({ orderId: order.id, err: error.message });
-  throw new Error(`Failed to save order ${order.id}`);
+  const message = error instanceof Error ? error.message : String(error);
+  logger.error({ orderId: order.id, err: message });
+  throw new Error(`Failed to save order ${order.id}`, { cause: error });
 }
 ```
 
