@@ -10,6 +10,15 @@ A collection of useful skills for AI coding agents. Skills are a lightweight, op
 npx skills add Ciro-Gallo/awesome-agent-skills
 ```
 
+## Skills
+
+| Skill | Use for |
+| --- | --- |
+| [`coding-best-practices`](./coding-best-practices/) | Production-grade code edits, refactors, tests, and commits |
+| [`x-twitter-scraper`](./x-twitter-scraper/) | Xquik X data workflows, MCP setup, webhooks, exports, monitoring, and gated publishing |
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
+
 ## Usage
 
 Skills are automatically available once installed. The agent will use them when relevant tasks are detected.
